@@ -3,10 +3,11 @@
 [](start)
 ## Build
 
-    npm install
     npm run build
 
 This will set up `package.json`, init a fresh repo, and clean up after itself.
+
+Everything below is part of the default README.md. Everything above will be erased by `npm run build`.
 [](end)
 
 ## Installation
