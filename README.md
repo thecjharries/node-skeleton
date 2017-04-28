@@ -7,7 +7,7 @@
 
 This will set up `package.json`, init a fresh repo, and clean up after itself.
 
-Everything below is part of the default README.md. Everything above will be erased by `npm run build`.
+Everything below is part of the default README.md. Everything above will be erased by `npm run build`. I haven't done any extensive testing, so use at your own risk. The purpose of this project was to figure out a good way to put all of these things together in a single, reusable location.
 [](end)
 
 ## Installation
@@ -21,7 +21,9 @@ Default is `watch`.
 
 * `gulp doc:build`: runs JSDoc
 * `gulp doc:server`: runs JSDoc and starts a local server
-* `gulp jshint`: runs JSHint (config in `.jshintrc`)
+* `gulp lint`: runs JSHint (config in `.jshintrc`)
+* `gulp mocha`: runs `mocha` tests. `npm test` or `mocha` (if globally installed) is probably a better idea.
+* `gulp prettify`: runs JS Beautify (config in `.jsbeautifyrc`)
 * `gulp todo`: compiles `TODO.md`
 * `gulp watch`: runs JSHint and compiles TODO on file change
 
@@ -30,14 +32,22 @@ Default is `watch`.
 ### Docs
 
     gulp doc:build
+    # or
+    gulp doc:server
+
+The command will either compile documentation or compile documentation and launch a local webserver.
 
 ### TODOs
 
     gulp todo
 
+The result is stored in `TODO.md`.
+
 ### Configs
 
 #### `.editorconfig`
+
+The excellent [Editor Config](http://editorconfig.org/) makes editor settings as consistent as possible.
 
     [*]
     # 4 spaces
@@ -51,7 +61,26 @@ Default is `watch`.
     trim_trailing_whitespace = true
     insert_final_newline = true
 
+#### `.jsbeautifyrc`
+
+Provides a simple config for [JS Beautifier](http://jsbeautifier.org/).
+
+    {
+        // Consistent spacing
+        "indent_size": 4,
+        "indent_char": " ",
+        "js": {
+            // Consistent spacing
+            "indent_size": 4,
+            // Allow lax arrays (eg , element)
+            "keep_array_indentation": true
+        }
+    }
+
+
 #### `.jshintrc`
+
+JS Styleguide using the amazing [JSHint](http://jshint.com/).
 
     {
         // Require scope
