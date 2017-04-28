@@ -87,15 +87,18 @@ function writePackageJson(results) {
 }
 
 function wipeGit() {
-    return new Promise((resolve, reject) => {
-        git.init(() => {
-            if (remote) {
-                git.addRemote('origin', remote, resolve);
-            } else {
-                resolve();
-            }
+    return fsp.remove(path.join(__dirname, '.git'))
+        .then(() => {
+            return new Promise((resolve, reject) => {
+                git.init(() => {
+                    if (remote) {
+                        git.addRemote('origin', remote, resolve);
+                    } else {
+                        resolve();
+                    }
+                });
+            });
         });
-    });
 }
 
 function cleanUp() {

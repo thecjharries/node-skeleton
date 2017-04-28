@@ -3,6 +3,7 @@
 [](start)
 ## Build
 
+    npm install
     npm run build
 
 This will set up `package.json`, init a fresh repo, and clean up after itself.
