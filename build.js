@@ -150,5 +150,3 @@ new Promise((resolve, reject) => {
     .catch((error) => {
         console.log(error);
     });
-
-//fs.unlink(path.join(__dirname, 'build.js'));
