@@ -5,7 +5,7 @@
   "description": "This is a simple project skeleton containing (probably more than all) the things I tend to use for node repos.",
   "main": "index.js",
   "scripts": {
-    "build": "node build",
+    "build": "npm install; node build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
