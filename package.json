@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "node-skeleton",
+  "version": "0.0.0",
+  "description": "This is a simple project skeleton containing (probably more than all) the things I tend to use for node repos.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "skeleton",
+    "gulp"
+  ],
+  "author": "CJ Harries <cj@wizardsoftheweb.pro>",
+  "license": "MIT",
+  "devDependencies": {
+    "bluebird": "^3.5.0",
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "fs-promise": "^2.0.2",
+    "gulp": "^3.9.1",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-todo": "^5.3.0",
+    "gulp-util": "^3.0.8",
+    "gulp-webserver": "^0.9.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.3.0",
+    "node-exec-promise": "^0.1.1",
+    "prompt": "^1.0.0",
+    "simple-git": "^1.70.0"
+  }
+}

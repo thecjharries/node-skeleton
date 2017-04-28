@@ -1,0 +1,11 @@
+{
+    "curly": true,
+    "eqeqeq": true,
+    "esnext": true,
+    "indent": 4,
+    "laxcomma": true,
+    "node": true,
+    "quotmark": true,
+    "undef": true,
+    "predef": [ "-Promise" ]
+}
