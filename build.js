@@ -1,16 +1,20 @@
+// Prompt colors
 const colors = require('colors/safe');
+// Promise-based exec
 const execThenable = require('node-exec-promise').exec;
-const fs = require('fs');
+// Promise-based fs
 const fsp = require('fs-promise');
+// Git manipulation
 const git = require('simple-git')();
+// Join pathes across environments
 const path = require('path');
+// Optimized promise library
 const Promise = require('bluebird');
+// Handle stdout/stdin
 const prompt = require('prompt');
 
-function getDefaultName() {
-    return __dirname.match(/[^\/]+$/)[0];
-}
-
+// TODO: pull into JSON
+const defaultName = __dirname.match(/[^\/]+$/)[0];
 const defaultDesc = '';
 const defaultVersion = '1.0.0';
 const defaultAuthor = 'CJ Harries <cj@wizardsoftheweb.pro>';
@@ -20,7 +24,7 @@ const defaultLicense = 'MIT';
 const promptProperties = {
     properties: {
         packageName: {
-            description: colors.white(`Project name (${getDefaultName()})`)
+            description: colors.white(`Project name (${defaultName})`)
         },
         packageDesc: {
             description: colors.white(`Description ("${defaultDesc}")`)
@@ -45,6 +49,7 @@ prompt.delimiter = colors.green(': ');
 
 let remote = null;
 
+// Collects results from prompt and writes them to package.json
 function writePackageJson(results) {
     if (results.packageRepo.length > 0) {
         remote = results.packageRepo;
@@ -54,7 +59,7 @@ function writePackageJson(results) {
             return contents
                 .replace(
                     /<packageName>/gi,
-                    results.packageName || getDefaultName()
+                    results.packageName || defaultName
                 )
                 .replace(
                     /<packageDesc>/gi,
@@ -86,6 +91,7 @@ function writePackageJson(results) {
         });
 }
 
+// Nukes old git and replaces with a fresh repo
 function wipeGit() {
     return fsp.remove(path.join(__dirname, '.git'))
         .then(() => {
@@ -101,6 +107,7 @@ function wipeGit() {
         });
 }
 
+// Cleans up README and removes all working files
 function cleanUp() {
     return fsp.readFile(path.join(__dirname, 'README.md'), 'utf-8')
         .then((contents) => {
@@ -128,11 +135,11 @@ function cleanUp() {
         });
 }
 
+// Kills the process
 function exit() {
     process.exit();
 }
 
-let promptResults = {};
 new Promise((resolve, reject) => {
         prompt.start();
 
