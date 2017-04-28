@@ -116,10 +116,15 @@ function cleanUp() {
             return fsp.remove(path.join(__dirname, 'build.js'));
         })
         .then(() => {
-            return fsp.remove(path.join(__dirname, 'node_modules'));
+            return execThenable('npm prune');
         })
-        .then(() => {
+        .then((stdout) => {
+            console.log(stdout);
             return execThenable('npm install');
+        })
+        .then((stdout) => {
+            console.log(stdout);
+            return;
         });
 }
 
